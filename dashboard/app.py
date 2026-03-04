@@ -1,4 +1,5 @@
 import streamlit as st
+from pathlib import Path
 import pandas as pd
 import plotly.express as px
 
@@ -25,10 +26,9 @@ st.markdown("""
 # -------------------------
 @st.cache_data
 def load_data():
-    return pd.read_csv("data/dados_saude_mental_fake.csv")
-
-df = load_data()
-
+    base_path = Path(__file__).parent
+    file_path = base_path / "data" / "dados_saude_mental_fake.csv"
+    return pd.read_csv(file_path)
 # -------------------------
 # Título
 # -------------------------
@@ -295,6 +295,7 @@ De modo geral, os resultados indicam padrões coerentes entre diagnóstico, perc
 
 
     
+
 
 
 
